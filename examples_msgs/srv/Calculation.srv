@@ -1,0 +1,7 @@
+# Request
+int32 a
+int32 b
+string arithmetic_operator
+---
+# Response
+int32 result

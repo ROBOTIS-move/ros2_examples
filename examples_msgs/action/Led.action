@@ -1,0 +1,8 @@
+# Goal
+int32 numbers
+---
+# Result
+int32[] result
+---
+# Feedback
+int32[] process
