@@ -18,7 +18,7 @@ branches:
     - develop
 
 install:
-  - git clone --quiet --depth 1 https://github.com/ROBOTIS-Platform/ros2ci.git .ros2ci
+  - git clone --quiet --depth 1 https://github.com/robotpilot/ros2ci.git .ros2ci
 
 matrix:
   include:
