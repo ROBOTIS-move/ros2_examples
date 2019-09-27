@@ -1,1 +1,0 @@
-/home/oh/ros2_example_topic/src/ros2_examples/build/examples_msgs/rosidl_typesupport_coredds_cpp/examples_msgs/action/dds_coredds/src/examples_msgs_action_dds__Led_Goal_TypeSupport.c
