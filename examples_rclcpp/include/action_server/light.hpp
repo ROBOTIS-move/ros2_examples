@@ -8,6 +8,7 @@
 
 #include <utility>
 
+
 #include <examples_msgs/action/led.hpp>
 
 #include "rclcpp/rclcpp.hpp"
@@ -25,29 +26,14 @@ namespace robotis
       explicit Light();
 
     private:
+      // Print help message to user
       void message_info();
-      
-      rclcpp_action::GoalResponse handle_goal(
-        const rclcpp_action::GoalUUID & uuid,
-        std::shared_ptr<const examples_msgs::action::Led::Goal> goal
-        );
-      
-
-
-      rclcpp_action::CancelResponse handle_cancel(
-        const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle
-      );
-
 
       void execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle);
-
-
-      void handle_accepted(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle);
-
-
+      
+      // Declare action server
       rclcpp_action::Server<examples_msgs::action::Led>::SharedPtr action_server_;
-
-      //const rclcpp::NodeOptions & options=rclcpp::NodeOptions()
+   
     };
      
 }

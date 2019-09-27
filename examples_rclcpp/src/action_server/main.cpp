@@ -11,8 +11,6 @@
 
 #include "rclcpp_action/rclcpp_action.hpp"
 
-
-
 void print_help()
 {
   printf("For action_server(light) node:\n");

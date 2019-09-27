@@ -1,0 +1,1 @@
+/home/oh/ros2_ws/build/ament_package/ament_package/template/environment_hook/library_path.sh

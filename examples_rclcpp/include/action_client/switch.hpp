@@ -19,32 +19,24 @@ namespace robotis
     class Switch : public rclcpp::Node
     {
     public:
-
-      explicit Switch();
+      // 'explicit' makes block data conversion
+      explicit Switch(const int32_t input_value);
 
       bool is_goal_done() const;
-
-      void send_goal();
-
-        
+      
+      int32_t Custom_value;
+          
     private:
-
-      rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
+      // Print help message to user
+      void message_info();
 
       rclcpp::TimerBase::SharedPtr timer_;
 
       bool goal_done_;
 
-      void goal_response_callback(std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr> future);
-
-      void feedback_callback(
-            rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
-            const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback
-      );
-
-      void result_callback(const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result);
-
-        
+      // Declare action client
+      rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
+      
     };
 }
 #endif // EXAMPLES_RCLCPP_CLIENT_SWITCH_HPP_
