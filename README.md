@@ -155,3 +155,23 @@ $ ros2 run rviz2 rviz2 -d examples_tf2/rviz/arm.rviz
 ```bash
 $ ros2 service call state std_srvs/srv/SetBool "data: false"
 ```
+
+## examples_lifecycle
+
+### Run examples_lifecycle
+```bash
+$ ros2 run examples_lifecycle robot
+```
+
+### Launch examples_lifecycle
+```bash
+$ ros2 launch examples_lifecycle bringup.launch.py auto_activate:=False
+```
+
+### Lifecycle client
+```bash
+$ ros2 lifecycle set /example/robot configure
+$ ros2 lifecycle set /example/robot activate
+$ ros2 lifecycle set /example/robot deactivate
+$ ros2 lifecycle set /example/robot shutdown
+```
