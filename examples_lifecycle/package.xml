@@ -11,8 +11,8 @@
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>lifecycle_msgs</depend>
-  <depend>rclcpp_lifecycle</depend>
   <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
   <depend>std_msgs</depend>
   <export>
     <build_type>ament_cmake</build_type>
