@@ -169,9 +169,25 @@ $ ros2 launch examples_lifecycle bringup.launch.py auto_activate:=False
 ```
 
 ### Lifecycle client
+#### Trigger lifecycle state transition
 ```bash
 $ ros2 lifecycle set /example/robot configure
 $ ros2 lifecycle set /example/robot activate
 $ ros2 lifecycle set /example/robot deactivate
 $ ros2 lifecycle set /example/robot shutdown
+```
+
+#### Get lifecycle state for one or more nodes
+```
+$ ros2 lifecycle get /example/robot
+```
+
+#### Output a list of available transitions
+```
+$ ros2 lifecycle list /example/robot
+```
+
+#### Output a list of nodes with lifecycle
+```
+$ ros2 lifecycle nodes
 ```
