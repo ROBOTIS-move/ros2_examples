@@ -32,8 +32,8 @@ set(LIFECYCLE_NODE_NAME robot)
 
 set(dependencies
   "lifecycle_msgs"
-  "rclcpp_lifecycle"
   "rclcpp"
+  "rclcpp_lifecycle"
   "std_msgs"
 )
 

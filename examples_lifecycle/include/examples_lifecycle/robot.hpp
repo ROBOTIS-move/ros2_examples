@@ -27,10 +27,10 @@
 #include <utility>
 // Load change_state service in lifecycle_msgs
 #include <lifecycle_msgs/srv/change_state.hpp>
-// Load string message in std_msgs
-#include <std_msgs/msg/string.hpp>
 // Load RCLCPP Lifecycle Node Library (https://github.com/ros2/rclcpp/tree/master/rclcpp_lifecycle)
 #include <rclcpp_lifecycle/lifecycle_node.hpp>
+// Load string message in std_msgs
+#include <std_msgs/msg/string.hpp>
 
 using LifecycleReturn =
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
