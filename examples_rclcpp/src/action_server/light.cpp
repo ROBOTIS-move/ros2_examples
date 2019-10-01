@@ -1,3 +1,19 @@
+/*******************************************************************************
+* Copyright 2019 ROBOTIS CO., LTD.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*******************************************************************************/
+
 #include "action_server/light.hpp"
 
 using namespace robotis;
@@ -21,7 +37,7 @@ Light::Light()
         }
         return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
       };
-  
+
   auto handle_cancel =
     [this](
       const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle) -> rclcpp_action::CancelResponse
@@ -47,10 +63,7 @@ Light::Light()
     handle_goal,
     handle_cancel,
     handle_accepted);
-
-
 }
-
 
 void Light::message_info()
 {
@@ -64,10 +77,7 @@ void Light::message_info()
     "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
 }
 
-
-
-
-void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)    
+void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
 {
   RCLCPP_INFO(get_logger(), "Executing goal");
   rclcpp::Rate loop_rate(1);
@@ -80,24 +90,23 @@ void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<exampl
 
   std::string lantern="[ ][ ][ ][ ][ ]";
 
-  for(int i =0; (i<goal->numbers)&&rclcpp::ok();++i)
+  for(int i = 0; (i<goal->numbers) && rclcpp::ok(); ++i)
   {
     if(goal_handle->is_canceling())
     {
       result->result=process;
       goal_handle->canceled(result);
-      RCLCPP_INFO(get_logger(),"Goal Canceled");
+      RCLCPP_INFO(get_logger(), "Goal Canceled");
       return;
     }
-    
-    lantern[3*i+1]='O';
+
+    lantern[3 * i + 1]='O';
     process.push_back(lantern);
 
     goal_handle->publish_feedback(feedback);
     RCLCPP_INFO(get_logger(), "Publish Feedback");
 
     loop_rate.sleep();
-
   }
 
   if(rclcpp::ok())
