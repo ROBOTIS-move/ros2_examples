@@ -65,7 +65,7 @@ Switch::Switch(const int32_t input_value)
                 rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
                 const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback) -> void
                 {
-                    RCLCPP_INFO(get_logger(),"Next result in sequence received: %s" ,feedback->process.back().c_str());
+                    RCLCPP_INFO(get_logger(),"Next result : %s" ,feedback->process.back().c_str());
                 };
 
             // send_goal_options.result_callback=std::bind(&Switch::result_callback,this,_1);
