@@ -38,9 +38,8 @@ Calculator::Calculator()
           request->arithmetic_operator.c_str());
 
         response->result = calculation(request->a, request->b, request->arithmetic_operator);
-        
+
       };
-  
   // Create a service that will use the callback function to handle requests.
   srv_ = create_service<examples_msgs::srv::Calculation>("calculate", calculator_callback);
 }

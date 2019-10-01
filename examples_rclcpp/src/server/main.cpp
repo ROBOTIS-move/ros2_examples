@@ -32,8 +32,6 @@
 
 #include "server/calculator.hpp"
 
-
-
 void print_help()
 {
   printf("For server(calculator) node:\n");

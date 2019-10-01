@@ -31,8 +31,6 @@
 // Load C++ ROS2 Client Library (http://docs.ros2.org/dashing/api/rclcpp/index.html)
 #include <rclcpp/rclcpp.hpp>
 
-
-
 namespace robotis
 {
 class Calculator : public rclcpp::Node
