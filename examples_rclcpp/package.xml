@@ -15,7 +15,6 @@
   <depend>rcutils</depend>
   <depend>std_msgs</depend>
   <depend>rclcpp_action</depend>
-  <depend>example_interfaces</depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>

@@ -18,7 +18,6 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(examples_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
-
 find_package(rclcpp_action REQUIRED)
 
 ################################################################################
@@ -39,7 +38,6 @@ set(dependencies
   "examples_msgs"
   "rclcpp"
   "rclcpp_action"
-  "example_interfaces"
 )
 
 add_executable(${CLIENT_NODE_NAME} src/client/main.cpp src/client/requestor.cpp)
