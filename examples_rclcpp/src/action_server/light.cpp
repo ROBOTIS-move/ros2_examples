@@ -109,7 +109,7 @@ void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<exampl
   {
     result->result=process;
     goal_handle->succeed(result);
-    RCLCPP_INFO(get_logger(), "Goal Succeeded");
+    RCLCPP_INFO(get_logger(), "Achieve the goal");
   }
 
 }
