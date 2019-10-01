@@ -45,7 +45,7 @@ Switch::Switch(const int32_t input_value)
             RCLCPP_INFO(get_logger(), "Sending goal");
 
             auto send_goal_options=rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
-            //send_goal_options.goal_response_callback = std::bind(&Switch::goal_response_callback, this, _1);
+
             send_goal_options.goal_response_callback =
             [this](
                 std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr>future) -> void
