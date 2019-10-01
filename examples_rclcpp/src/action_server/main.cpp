@@ -1,14 +1,10 @@
-#include <cstdio>
 #include <memory>
 #include <string>
 #include <utility>
 
-#include "rclcpp/rclcpp.hpp"
-
-#include <rcutils/cmdline_parser.h>
-
 #include "action_server/light.hpp"
-
+#include <rcutils/cmdline_parser.h>
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
 void print_help()
@@ -25,7 +21,7 @@ int main(int argc, char *argv[])
   // This ensures a correct sync of all prints
   // even when executed simultaneously within the launch file.
   setvbuf(stdout, NULL, _IONBF, BUFSIZ);
-  
+
   // Find specified argument option
   if (rcutils_cli_option_exist(argv, argv + argc, "-h"))
   {
@@ -51,4 +47,3 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-
