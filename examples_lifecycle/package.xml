@@ -4,7 +4,7 @@
   <name>examples_lifecycle</name>
   <version>1.0.0</version>
   <description>
-    Examples of ROS 2 C++ nodes
+    Examples of ROS 2 RCLCPP Lifecycle nodes
   </description>
   <author email="thlim@robotis.com">Darby Lim</author>
   <maintainer email="pyo@robotis.com">Pyo</maintainer>
