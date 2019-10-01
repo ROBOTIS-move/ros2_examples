@@ -1,19 +1,14 @@
 #ifndef EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCH_HPP_
 #define EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCH_HPP_
 
-
 #include <memory>
-
 #include <string>
-
 #include <utility>
 
-
 #include <examples_msgs/action/led.hpp>
-
 #include "rclcpp/rclcpp.hpp"
-
 #include "rclcpp_action/rclcpp_action.hpp"
+
 
 namespace robotis
 {
