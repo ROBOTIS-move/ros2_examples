@@ -1,8 +1,8 @@
 #include "action_client/switch.hpp"
+
 #include <inttypes.h>
 
 using namespace robotis;
-
 using namespace std::chrono_literals;
 
 Switch::Switch(const int32_t input_value)
@@ -46,7 +46,7 @@ Switch::Switch(const int32_t input_value)
 
             auto send_goal_options=rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
             //send_goal_options.goal_response_callback = std::bind(&Switch::goal_response_callback, this, _1);
-            send_goal_options.goal_response_callback = 
+            send_goal_options.goal_response_callback =
             [this](
                 std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr>future) -> void
                 {
@@ -57,7 +57,7 @@ Switch::Switch(const int32_t input_value)
                     }
                     else
                     {
-                        RCLCPP_INFO(get_logger(), "Goal accepted by action server, waiting for result");    
+                        RCLCPP_INFO(get_logger(), "Goal accepted by action server, waiting for result");
                     }
 
                 };
@@ -69,7 +69,7 @@ Switch::Switch(const int32_t input_value)
                 {
                     RCLCPP_INFO(get_logger(),"Next result in sequence received: %s" ,feedback->process.back().c_str());
                 };
-            
+
             // send_goal_options.result_callback=std::bind(&Switch::result_callback,this,_1);
             send_goal_options.result_callback =
             [this](
@@ -93,10 +93,10 @@ Switch::Switch(const int32_t input_value)
                     RCLCPP_INFO(get_logger(),"Result received");
                     for(auto number : result.result->result)
                     {
-                      RCLCPP_INFO(get_logger(), "%s", number.c_str());                     
-                    }                 
+                      RCLCPP_INFO(get_logger(), "%s", number.c_str());
+                    }
                 };
-            
+
             auto goal_handle_future=action_client_->async_send_goal(goal,send_goal_options);
         }
     );
@@ -115,4 +115,3 @@ void Switch::message_info()
 
   RCLCPP_INFO(this->get_logger(), "Requestor calls light!");
 }
-
