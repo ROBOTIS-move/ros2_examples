@@ -59,7 +59,7 @@ Switch::Switch(const int32_t input_value)
                     }
 
                 };
-            // send_goal_options.feedback_callback = std::bind(&Switch::feedback_callback, this, _1, _2);
+
             send_goal_options.feedback_callback =
             [this](
                 rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
@@ -68,7 +68,6 @@ Switch::Switch(const int32_t input_value)
                     RCLCPP_INFO(get_logger(),"Next result : %s" ,feedback->process.back().c_str());
                 };
 
-            // send_goal_options.result_callback=std::bind(&Switch::result_callback,this,_1);
             send_goal_options.result_callback =
             [this](
                 const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result) -> void
