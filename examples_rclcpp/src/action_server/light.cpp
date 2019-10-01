@@ -69,8 +69,8 @@ void Light::message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
   RCLCPP_INFO(
-    this->get_logger(),
-    "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
+  this->get_logger(),
+  "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
 }
 
 void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
