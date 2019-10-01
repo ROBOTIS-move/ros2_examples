@@ -1,17 +1,13 @@
-#include <cstdio>
+#include <inttypes.h>
 #include <memory>
 #include <string>
 #include <utility>
 
-#include "rclcpp/rclcpp.hpp"
-
-#include <rcutils/cmdline_parser.h>
-
 #include "action_client/switch.hpp"
-
+#include <rcutils/cmdline_parser.h>
+#include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
-#include <inttypes.h>
 
 void print_help()
 {
@@ -40,7 +36,7 @@ int main(int argc, char *argv[])
   // This function initializes any global resources needed by the middleware and the client library,
   // as well as doing client library related command line argument parsing.
   rclcpp::init(argc, argv);
-  
+
   // Get data from specified argument
   char * cli_option = rcutils_cli_get_option(argv, argv+argc, "-n");
 
