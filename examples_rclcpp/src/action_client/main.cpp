@@ -38,12 +38,12 @@ int main(int argc, char *argv[])
   rclcpp::init(argc, argv);
 
   // Get data from specified argument
-  char * cli_option = rcutils_cli_get_option(argv, argv+argc, "-n");
+  char * cmd_line_interface_option = rcutils_cli_get_option(argv, argv+argc, "-n");
 
   int input_value = 5;
-  if(nullptr != cli_option)
+  if(nullptr != cmd_line_interface_option)
   {
-     input_value=atoi(cli_option);
+     input_value=atoi(cmd_line_interface_option);
   }
 
   // Load node on shared pointer
