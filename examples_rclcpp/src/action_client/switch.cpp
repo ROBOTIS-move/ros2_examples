@@ -17,7 +17,7 @@ Switch::Switch(const int32_t input_value)
         this->get_node_waitables_interface(),
         "Led_on");
 
-        this->Custom_value=input_value;
+        this->user_custom_value_=input_value;
 
     timer_=this->create_wall_timer(
         0.5s,
@@ -40,7 +40,7 @@ Switch::Switch(const int32_t input_value)
             }
 
             auto goal=examples_msgs::action::Led::Goal();
-            goal.numbers=Switch::Custom_value;
+            goal.numbers=Switch::user_custom_value_;
 
             auto send_goal_options=rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
 

@@ -20,7 +20,7 @@ namespace robotis
 
       bool is_goal_done() const;
 
-      int32_t Custom_value;
+      int32_t user_custom_value_;
 
     private:
       // Print help message to user
