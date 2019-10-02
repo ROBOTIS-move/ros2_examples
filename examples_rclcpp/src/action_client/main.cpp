@@ -35,14 +35,14 @@ int main(int argc, char *argv[])
 
   int input_value = 5;
 
-  if(nullptr != cmd_line_interface_option)
+  if (nullptr != cmd_line_interface_option)
   {
     input_value=atoi(cmd_line_interface_option);
   }
 
   auto node = std::make_shared<robotis::Switcher>(input_value);
 
-  while(!node->is_goal_done())
+  while (!node->is_goal_done())
   {
     rclcpp::spin_some(node);
   }
