@@ -1,4 +1,3 @@
-#include <inttypes.h>
 #include <memory>
 #include <string>
 #include <utility>
@@ -12,7 +11,7 @@
 
 void print_help()
 {
-  printf("For server_client(switch) node:\n");
+  printf("For server_client(switcher) node:\n");
   printf("action_client [-h] [-n number]\n");
   printf("Options:\n");
   printf("\t-h Help            : Print this help function.\n");

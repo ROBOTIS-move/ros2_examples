@@ -2,61 +2,51 @@
 
 using namespace robotis;
 
-Lightor::Lightor()
-: Node("light")
+Lightor::Lightor() : Node("light")
 {
-  print_message_info();
   using namespace std::placeholders;
 
-  auto handle_goal =
-    [this](
-      const rclcpp_action::GoalUUID & uuid,
-      std::shared_ptr<const examples_msgs::action::Led::Goal> goal)->rclcpp_action::GoalResponse
-      {
-        RCLCPP_INFO(get_logger(), "Received goal request %d", goal->numbers);
-        (void)uuid;
+  print_message_info();
 
-        if (goal->numbers > 6)
-        {
-          return rclcpp_action::GoalResponse::REJECT;
-        }
-
-        return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
-      };
-
-  auto handle_cancel =
-    [this](
-      const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)->rclcpp_action::CancelResponse
-      {
-        RCLCPP_INFO(get_logger(), "Received request to cancel goal");
-        (void)goal_handle;
-        return rclcpp_action::CancelResponse::ACCEPT;
-      };
-  auto handle_accepted =
-    [this](
-      const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)->void
-      {
-        using namespace std::placeholders;
-        std::thread{std::bind(&Lightor::execute, this, _1), goal_handle}.detach();
-      };
-
-  action_server_ = rclcpp_action::create_server<examples_msgs::action::Led>(
+  this->action_server_ = rclcpp_action::create_server<examples_msgs::action::Led>(
     this->get_node_base_interface(),
     this->get_node_clock_interface(),
     this->get_node_logging_interface(),
     this->get_node_waitables_interface(),
     "Led_on",
-    handle_goal,
-    handle_cancel,
-    handle_accepted);
+    std::bind(&Lightor::handle_goal, this, _1, _2),
+    std::bind(&Lightor::handle_cancel, this, _1),
+    std::bind(&Lightor::handle_accepted, this, _1));
 }
 
-void Lightor::print_message_info()
+rclcpp_action::GoalResponse Lightor::handle_goal(
+  const rclcpp_action::GoalUUID & uuid,
+  std::shared_ptr<const examples_msgs::action::Led::Goal> goal)
 {
-  RCLCPP_DEBUG(this->get_logger(), "Test debug message");
-  RCLCPP_INFO(
-  this->get_logger(),
-  "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
+  RCLCPP_INFO(this->get_logger(), "Received goal request %d", goal->numbers);
+  (void)uuid;
+
+  if (goal->numbers > 6)
+  {
+    return rclcpp_action::GoalResponse::REJECT;
+  }
+
+  return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
+}
+
+rclcpp_action::CancelResponse Lightor::handle_cancel(
+  const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
+{
+  RCLCPP_INFO(get_logger(), "Received request to cancel goal");
+  (void)goal_handle;
+  return rclcpp_action::CancelResponse::ACCEPT;
+}
+
+void Lightor::handle_accepted(
+  const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
+{
+  using namespace std::placeholders;
+  std::thread{std::bind(&Lightor::execute, this, _1), goal_handle}.detach();
 }
 
 void Lightor::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
@@ -97,4 +87,12 @@ void Lightor::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<exam
     goal_handle->succeed(result);
     RCLCPP_INFO(get_logger(), "Achieve the goal");
   }
+}
+
+void Lightor::print_message_info()
+{
+  RCLCPP_DEBUG(this->get_logger(), "Test debug message");
+  RCLCPP_INFO(
+  this->get_logger(),
+  "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
 }

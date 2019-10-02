@@ -14,24 +14,35 @@
 namespace robotis
 {
 class Switcher : public rclcpp::Node
-  {
-   public:
-    explicit Switcher(const int32_t input_value);
-    virtual ~Switcher(){};
+{
+ public:
+  explicit Switcher(const int32_t input_value);
+  virtual ~Switcher(){};
 
-    bool is_goal_done() const;
+  void send_goal();
 
-    int32_t user_custom_value_ = 5;
+  bool is_goal_done() const;
 
-   private:
-    void print_message_info();
+  int32_t user_custom_value_ = 5;
 
-    rclcpp::TimerBase::SharedPtr timer_;
+ private:
+  void print_message_info();
 
-    bool goal_done_ = false;
+  void goal_response_callback(
+    std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr> future);
 
-    rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
+  void feedback_callback(
+    rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
+    const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback);
 
-  };
+  void result_callback(const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result);
+
+  bool goal_done_ = false;
+
+  rclcpp::TimerBase::SharedPtr timer_;
+
+  rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
+
+};
 }
 #endif // EXAMPLES_RCLCPP_CLIENT_SWITCH_HPP_

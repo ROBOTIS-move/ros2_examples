@@ -11,7 +11,7 @@
 
 void print_help()
 {
-  printf("For action_server(light) node:\n");
+  printf("For action_server(lightor) node:\n");
   printf("action_server [-h]\n");
   printf("Options:\n");
   printf("\t-h Help            : Print this help function.\n");
