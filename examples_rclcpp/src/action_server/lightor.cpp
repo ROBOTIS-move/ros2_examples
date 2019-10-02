@@ -40,7 +40,7 @@ Lightor::Lightor()
         std::thread{std::bind(&Lightor::execute, this, _1), goal_handle}.detach();
       };
 
-  action_server_ = clcpp_action::create_server<examples_msgs::action::Led>(
+  action_server_ = rclcpp_action::create_server<examples_msgs::action::Led>(
     this->get_node_base_interface(),
     this->get_node_clock_interface(),
     this->get_node_logging_interface(),
