@@ -17,7 +17,7 @@ Switcher::Switcher(const int32_t input_value)
         this->get_node_waitables_interface(),
         "Led_on");
 
-        this->user_custom_value_=input_value;
+        this->user_custom_value_ = input_value;
 
     timer_=this->create_wall_timer(
         0.5s,
