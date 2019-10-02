@@ -10,7 +10,7 @@ Switcher::Switcher(const int32_t input_value)
 {
   print_message_info();
 
-  this->action_client_=rclcpp_action::create_client<examples_msgs::action::Led>(
+  this->action_client_ = rclcpp_action::create_client<examples_msgs::action::Led>(
     this->get_node_base_interface(),
     this->get_node_graph_interface(),
     this->get_node_logging_interface(),
@@ -19,40 +19,43 @@ Switcher::Switcher(const int32_t input_value)
 
   this->user_custom_value_ = input_value;
 
-  timer_=this->create_wall_timer(
+  timer_= this->create_wall_timer(
     0.5s,
-    [this]() ->void
+    [this]()->void
     {
       using namespace std::placeholders;
 
       timer_->cancel();
 
-      goal_done_=false;
+      goal_done_ = false;
 
-      if(!action_client_)
+      if (!action_client_)
       {
         RCLCPP_INFO(get_logger(), "Action client not initialized");
       }
 
-      if(!action_client_->wait_for_action_server(10s))
+      if (!action_client_->wait_for_action_server(10s))
       {
         RCLCPP_ERROR(get_logger(), "Action server not available after waiting");
-        goal_done_=true;
+
+        goal_done_ = true;
+
         return;
       }
 
-      auto goal=examples_msgs::action::Led::Goal();
-      goal.numbers=Switcher::user_custom_value_;
+      auto goal = examples_msgs::action::Led::Goal();
 
-      auto send_goal_options=rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
+      goal.numbers = Switcher::user_custom_value_;
+
+      auto send_goal_options = rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
 
       send_goal_options.goal_response_callback =
         [this](
-          std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr>future) -> void
+          std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr>future)->void
           {
-            auto goal_handle=future.get();
+            auto goal_handle = future.get();
 
-            if(!goal_handle)
+            if (!goal_handle)
             {
               RCLCPP_ERROR(get_logger(), "Goal was rejected by action server");
             }
@@ -65,18 +68,18 @@ Switcher::Switcher(const int32_t input_value)
       send_goal_options.feedback_callback =
         [this](
           rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
-          const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback) -> void
+          const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback)->void
           {
-            RCLCPP_INFO(get_logger(),"Next result : %s" ,feedback->process.back().c_str());
+            RCLCPP_INFO(get_logger(), "Next result : %s" , feedback->process.back().c_str());
           };
 
       send_goal_options.result_callback =
         [this](
-          const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result) -> void
+          const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result)->void
           {
-            goal_done_=true;
+            goal_done_ = true;
 
-            switch(result.code)
+            switch (result.code)
             {
               case rclcpp_action::ResultCode::SUCCEEDED:
               {
@@ -84,43 +87,41 @@ Switcher::Switcher(const int32_t input_value)
               }
               case rclcpp_action::ResultCode::ABORTED:
               {
-                RCLCPP_ERROR(get_logger(),"Goal was aborted");
+                RCLCPP_ERROR(get_logger(), "Goal was aborted");
                 return;
               }
               case rclcpp_action::ResultCode::CANCELED:
               {
-                RCLCPP_ERROR(get_logger(),"Goal was canceled");
+                RCLCPP_ERROR(get_logger(), "Goal was canceled");
                 return;
               }
               default:
               {
-                RCLCPP_ERROR(get_logger(),"Unknown result code");
+                RCLCPP_ERROR(get_logger(), "Unknown result code");
                 return;
               }
             }
 
-            RCLCPP_INFO(get_logger(),"Result received");
+            RCLCPP_INFO(get_logger(), "Result received");
 
-            for(auto number : result.result->result)
+            for (auto number : result.result->result)
             {
               RCLCPP_INFO(get_logger(), "%s", number.c_str());
             }
           };
 
-      auto goal_handle_future=action_client_->async_send_goal(goal,send_goal_options);
-    });
+      auto goal_handle_future=action_client_->async_send_goal(goal, send_goal_options);
+    }
+  );
 }
-
 
 bool Switcher::is_goal_done() const
 {
-    return goal_done_;
+  return goal_done_;
 }
-
 
 void Switcher::print_message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
-
   RCLCPP_INFO(this->get_logger(), "Requestor calls light!");
 }

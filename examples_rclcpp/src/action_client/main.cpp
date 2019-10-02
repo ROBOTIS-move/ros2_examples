@@ -3,10 +3,11 @@
 #include <string>
 #include <utility>
 
-#include "action_client/switcher.hpp"
 #include <rcutils/cmdline_parser.h>
-#include "rclcpp/rclcpp.hpp"
-#include "rclcpp_action/rclcpp_action.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+
+#include "action_client/switcher.hpp"
 
 
 void print_help()
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
 
   if (nullptr != cmd_line_interface_option)
   {
-    input_value=atoi(cmd_line_interface_option);
+    input_value = atoi(cmd_line_interface_option);
   }
 
   auto node = std::make_shared<robotis::Switcher>(input_value);

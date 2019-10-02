@@ -5,34 +5,33 @@
 #include <string>
 #include <utility>
 
-#include <examples_msgs/action/led.hpp>
-#include "rclcpp/rclcpp.hpp"
-#include "rclcpp_action/rclcpp_action.hpp"
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+
+#include "examples_msgs/action/led.hpp"
 
 
 namespace robotis
 {
-    class Switcher : public rclcpp::Node
-    {
-    public:
-      // 'explicit' makes block data conversion
-      explicit Switcher(const int32_t input_value);
+class Switcher : public rclcpp::Node
+  {
+   public:
+    explicit Switcher(const int32_t input_value);
+    virtual ~Switcher(){};
 
-      bool is_goal_done() const;
+    bool is_goal_done() const;
 
-      int32_t user_custom_value_;
+    int32_t user_custom_value_ = 5;
 
-    private:
-      // Print help message to user
-      void print_message_info();
+   private:
+    void print_message_info();
 
-      rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::TimerBase::SharedPtr timer_;
 
-      bool goal_done_;
+    bool goal_done_ = false;
 
-      // Declare action client
-      rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
+    rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
 
-    };
+  };
 }
 #endif // EXAMPLES_RCLCPP_CLIENT_SWITCH_HPP_
