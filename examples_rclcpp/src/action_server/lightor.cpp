@@ -21,7 +21,7 @@ using namespace robotis;
 Lightor::Lightor()
 : Node("light")
 {
-  message_info();
+  print_message_info();
   using namespace std::placeholders;
 
   auto handle_goal =
@@ -65,7 +65,7 @@ Lightor::Lightor()
     handle_accepted);
 }
 
-void Lightor::message_info()
+void Lightor::print_message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
   RCLCPP_INFO(

@@ -20,7 +20,7 @@ namespace robotis
 
     private:
       // Print help message to user
-      void message_info();
+      void print_message_info();
 
       void execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle);
 
