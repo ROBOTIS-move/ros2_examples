@@ -8,7 +8,7 @@ using namespace std::chrono_literals;
 Switch::Switch(const int32_t input_value)
 : Node("switch"), goal_done_(false)
 {
-    message_info();
+    print_message_info();
 
     this->action_client_=rclcpp_action::create_client<examples_msgs::action::Led>(
         this->get_node_base_interface(),
@@ -106,7 +106,7 @@ bool Switch::is_goal_done() const
 }
 
 
-void Switch::message_info()
+void Switch::print_message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
 

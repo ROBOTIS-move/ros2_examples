@@ -24,7 +24,7 @@ namespace robotis
 
     private:
       // Print help message to user
-      void message_info();
+      void print_message_info();
 
       rclcpp::TimerBase::SharedPtr timer_;
 
