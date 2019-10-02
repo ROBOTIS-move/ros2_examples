@@ -34,9 +34,10 @@ int main(int argc, char *argv[])
   char * cmd_line_interface_option = rcutils_cli_get_option(argv, argv+argc, "-n");
 
   int input_value = 5;
+
   if(nullptr != cmd_line_interface_option)
   {
-     input_value=atoi(cmd_line_interface_option);
+    input_value=atoi(cmd_line_interface_option);
   }
 
   auto node = std::make_shared<robotis::Switcher>(input_value);
