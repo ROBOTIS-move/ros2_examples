@@ -2,7 +2,7 @@
 #include <string>
 #include <utility>
 
-#include "action_server/light.hpp"
+#include "action_server/lightor.hpp"
 #include <rcutils/cmdline_parser.h>
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
   rclcpp::init(argc, argv);
 
-  auto node = std::make_shared<robotis::Light>();
+  auto node = std::make_shared<robotis::Lightor>();
 
   rclcpp::spin(node);
 

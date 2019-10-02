@@ -1,5 +1,5 @@
-#ifndef EXAMPLES_RCLCPP_ACTION_SERVER_LIGHT_HPP_
-#define EXAMPLES_RCLCPP_ACTION_SERVER_LIGHT_HPP_
+#ifndef EXAMPLES_RCLCPP_ACTION_SERVER_LIGHTOR_HPP_
+#define EXAMPLES_RCLCPP_ACTION_SERVER_LIGHTOR_HPP_
 
 #include <memory>
 #include <string>
@@ -12,11 +12,11 @@
 
 namespace robotis
 {
-    class Light : public rclcpp::Node
+    class Lightor : public rclcpp::Node
     {
     public:
       // 'explicit' makes block data conversion
-      explicit Light();
+      explicit Lightor();
 
     private:
       // Print help message to user

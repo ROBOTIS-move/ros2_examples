@@ -14,11 +14,11 @@
 * limitations under the License.
 *******************************************************************************/
 
-#include "action_server/light.hpp"
+#include "action_server/lightor.hpp"
 
 using namespace robotis;
 
-Light::Light()
+Lightor::Lightor()
 : Node("light")
 {
   message_info();
@@ -51,7 +51,7 @@ Light::Light()
       const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle) -> void
       {
         using namespace std::placeholders;
-        std::thread{std::bind(&Light::execute,this,_1),goal_handle}.detach();
+        std::thread{std::bind(&Lightor::execute,this,_1),goal_handle}.detach();
       };
 
   action_server_=rclcpp_action::create_server<examples_msgs::action::Led>(
@@ -65,7 +65,7 @@ Light::Light()
     handle_accepted);
 }
 
-void Light::message_info()
+void Lightor::message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
   RCLCPP_INFO(
@@ -73,7 +73,7 @@ void Light::message_info()
   "ros2 action_server call /Led_on examples_msgs/action/Led \"{numbers : 5}\"");
 }
 
-void Light::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
+void Lightor::execute(const std::shared_ptr<rclcpp_action::ServerGoalHandle<examples_msgs::action::Led>> goal_handle)
 {
   RCLCPP_INFO(get_logger(), "Executing goal");
   rclcpp::Rate loop_rate(1);
