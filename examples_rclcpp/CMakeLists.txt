@@ -55,7 +55,7 @@ ament_target_dependencies(${SUBSCRIBER_NODE_NAME} ${dependencies})
 add_executable(${ACTION_SERVER_NODE_NAME} src/action_server/main.cpp src/action_server/light.cpp)
 ament_target_dependencies(${ACTION_SERVER_NODE_NAME} ${dependencies})
 
-add_executable(${ACTION_CLIENT_NODE_NAME} src/action_client/main.cpp src/action_client/switch.cpp)
+add_executable(${ACTION_CLIENT_NODE_NAME} src/action_client/main.cpp src/action_client/switcher.cpp)
 ament_target_dependencies(${ACTION_CLIENT_NODE_NAME} ${dependencies})
 
 ################################################################################

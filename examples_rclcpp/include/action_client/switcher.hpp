@@ -1,5 +1,5 @@
-#ifndef EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCH_HPP_
-#define EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCH_HPP_
+#ifndef EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCHER_HPP_
+#define EXAMPLES_RCLCPP_ACTION_CLIENT_SWITCHER_HPP_
 
 #include <memory>
 #include <string>
@@ -12,11 +12,11 @@
 
 namespace robotis
 {
-    class Switch : public rclcpp::Node
+    class Switcher : public rclcpp::Node
     {
     public:
       // 'explicit' makes block data conversion
-      explicit Switch(const int32_t input_value);
+      explicit Switcher(const int32_t input_value);
 
       bool is_goal_done() const;
 

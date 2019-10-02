@@ -1,11 +1,11 @@
-#include "action_client/switch.hpp"
+#include "action_client/switcher.hpp"
 
 #include <inttypes.h>
 
 using namespace robotis;
 using namespace std::chrono_literals;
 
-Switch::Switch(const int32_t input_value)
+Switcher::Switcher(const int32_t input_value)
 : Node("switch"), goal_done_(false)
 {
     print_message_info();
@@ -40,7 +40,7 @@ Switch::Switch(const int32_t input_value)
             }
 
             auto goal=examples_msgs::action::Led::Goal();
-            goal.numbers=Switch::user_custom_value_;
+            goal.numbers=Switcher::user_custom_value_;
 
             auto send_goal_options=rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
 
@@ -100,13 +100,13 @@ Switch::Switch(const int32_t input_value)
 }
 
 
-bool Switch::is_goal_done() const
+bool Switcher::is_goal_done() const
 {
     return goal_done_;
 }
 
 
-void Switch::print_message_info()
+void Switcher::print_message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
 

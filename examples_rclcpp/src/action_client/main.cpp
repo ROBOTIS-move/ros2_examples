@@ -3,7 +3,7 @@
 #include <string>
 #include <utility>
 
-#include "action_client/switch.hpp"
+#include "action_client/switcher.hpp"
 #include <rcutils/cmdline_parser.h>
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
      input_value=atoi(cmd_line_interface_option);
   }
 
-  auto node = std::make_shared<robotis::Switch>(input_value);
+  auto node = std::make_shared<robotis::Switcher>(input_value);
 
   while(!node->is_goal_done())
   {
