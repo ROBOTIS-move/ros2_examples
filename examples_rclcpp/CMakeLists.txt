@@ -32,7 +32,6 @@ set(SERVER_NODE_NAME server)
 set(SUBSCRIBER_NODE_NAME subscriber)
 set(ACTION_SERVER_NODE_NAME action_server)
 set(ACTION_CLIENT_NODE_NAME action_client)
-
 set(dependencies
   "examples_msgs"
   "rclcpp"
