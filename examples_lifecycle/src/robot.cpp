@@ -36,7 +36,8 @@ Robot::Robot(const bool & auto_activate)
     client_change_state_ =
       this->create_client<lifecycle_msgs::srv::ChangeState>("robot/change_state");
 
-    if (!client_change_state_->wait_for_service(1s)) {
+    if (!client_change_state_->wait_for_service(1s))
+    {
       RCLCPP_ERROR(
         get_logger(),
         "Service %s is not available.",
