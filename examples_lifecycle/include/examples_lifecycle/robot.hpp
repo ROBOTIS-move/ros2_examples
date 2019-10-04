@@ -32,6 +32,7 @@
 // Load string message in std_msgs
 #include <std_msgs/msg/string.hpp>
 
+
 using LifecycleReturn =
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
 

@@ -32,6 +32,7 @@
 // Load user-defined header
 #include "examples_lifecycle/robot.hpp"
 
+
 void print_help()
 {
   printf("For lifecycle(robot) node:\n");
