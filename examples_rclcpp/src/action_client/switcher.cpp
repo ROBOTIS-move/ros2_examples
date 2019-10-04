@@ -8,7 +8,7 @@ Switcher::Switcher(const int32_t input_value)
 {
   print_message_info();
 
-  this->action_client_ = rclcpp_action::create_client<examples_msgs::action::Led>(
+  this->action_client_ = rclcpp_action::create_client<Led>(
     this->get_node_base_interface(),
     this->get_node_graph_interface(),
     this->get_node_logging_interface(),
@@ -52,11 +52,11 @@ void Switcher::send_goal()
     }
   }
 
-  auto goal = examples_msgs::action::Led::Goal();
+  auto goal = Led::Goal();
 
   goal.numbers = Switcher::user_custom_value_;
 
-  auto send_goal_options = rclcpp_action::Client<examples_msgs::action::Led>::SendGoalOptions();
+  auto send_goal_options = rclcpp_action::Client<Led>::SendGoalOptions();
 
   send_goal_options.goal_response_callback =
     std::bind(&Switcher::goal_response_callback, this, _1);
@@ -71,7 +71,7 @@ void Switcher::send_goal()
 }
 
 void Switcher::goal_response_callback(
-  std::shared_future<rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr> future)
+  std::shared_future<rclcpp_action::ClientGoalHandle<Led>::SharedPtr> future)
 {
   auto goal_handle = future.get();
 
@@ -86,14 +86,14 @@ void Switcher::goal_response_callback(
 }
 
 void Switcher::feedback_callback(
-  rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
-  const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback)
+  rclcpp_action::ClientGoalHandle<Led>::SharedPtr,
+  const std::shared_ptr<const Led::Feedback> feedback)
 {
   RCLCPP_INFO(get_logger(), "Next result : %s" , feedback->process.back().c_str());
 }
 
 void Switcher::result_callback(
-  const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result)
+  const rclcpp_action::ClientGoalHandle<Led>::WrappedResult & result)
 {
   goal_done_ = true;
 
