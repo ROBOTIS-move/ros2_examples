@@ -4,7 +4,8 @@ using namespace robotis;
 using namespace std::chrono_literals;
 
 Switcher::Switcher(const int32_t input_value)
-: Node("switch"), goal_done_(false)
+: Node("switch"),
+  goal_done_(false)
 {
   print_message_info();
 
