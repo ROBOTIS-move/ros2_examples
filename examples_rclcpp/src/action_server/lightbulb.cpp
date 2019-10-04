@@ -2,7 +2,8 @@
 
 using namespace robotis;
 
-LightBulb::LightBulb() : Node("light")
+LightBulb::LightBulb()
+: Node("light")
 {
   using namespace std::placeholders;
 
