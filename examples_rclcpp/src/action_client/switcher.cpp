@@ -83,7 +83,6 @@ void Switcher::goal_response_callback(
   {
     RCLCPP_INFO(get_logger(), "Goal accepted by action server, waiting for result");
   }
-
 }
 
 void Switcher::feedback_callback(
@@ -132,5 +131,5 @@ void Switcher::result_callback(
 void Switcher::print_message_info()
 {
   RCLCPP_DEBUG(this->get_logger(), "Test debug message");
-  RCLCPP_INFO(this->get_logger(), "switcher calls lightor!");
+  RCLCPP_INFO(this->get_logger(), "switcher calls lightbulb!");
 }

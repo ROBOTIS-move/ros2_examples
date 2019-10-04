@@ -35,14 +35,14 @@ class Switcher : public rclcpp::Node
     rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::SharedPtr,
     const std::shared_ptr<const examples_msgs::action::Led::Feedback> feedback);
 
-  void result_callback(const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result);
+  void result_callback(
+    const rclcpp_action::ClientGoalHandle<examples_msgs::action::Led>::WrappedResult & result);
 
   bool goal_done_ = false;
 
   rclcpp::TimerBase::SharedPtr timer_;
 
   rclcpp_action::Client<examples_msgs::action::Led>::SharedPtr action_client_;
-
 };
 }
 #endif // EXAMPLES_RCLCPP_CLIENT_SWITCH_HPP_

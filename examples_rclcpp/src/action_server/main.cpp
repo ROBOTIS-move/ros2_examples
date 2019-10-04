@@ -6,12 +6,12 @@
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp_action/rclcpp_action.hpp>
 
-#include "action_server/lightor.hpp"
+#include "action_server/lightbulb.hpp"
 
 
 void print_help()
 {
-  printf("For action_server(lightor) node:\n");
+  printf("For action_server(lightBulb) node:\n");
   printf("action_server [-h]\n");
   printf("Options:\n");
   printf("\t-h Help            : Print this help function.\n");
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
   rclcpp::init(argc, argv);
 
-  auto node = std::make_shared<robotis::Lightor>();
+  auto node = std::make_shared<robotis::LightBulb>();
 
   rclcpp::spin(node);
 
