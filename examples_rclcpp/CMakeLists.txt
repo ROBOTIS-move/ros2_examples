@@ -26,12 +26,13 @@ include_directories(
   include
 )
 
+set(ACTION_SERVER_NODE_NAME action_server)
+set(ACTION_CLIENT_NODE_NAME action_client)
 set(CLIENT_NODE_NAME client)
 set(PUBLISHER_NODE_NAME publisher)
 set(SERVER_NODE_NAME server)
 set(SUBSCRIBER_NODE_NAME subscriber)
-set(ACTION_SERVER_NODE_NAME action_server)
-set(ACTION_CLIENT_NODE_NAME action_client)
+
 set(dependencies
   "examples_msgs"
   "rclcpp"
@@ -60,12 +61,12 @@ ament_target_dependencies(${ACTION_CLIENT_NODE_NAME} ${dependencies})
 # Install
 ################################################################################
 install(TARGETS
+  ${ACTION_SERVER_NODE_NAME}
+  ${ACTION_CLIENT_NODE_NAME}
   ${CLIENT_NODE_NAME}
   ${PUBLISHER_NODE_NAME}
   ${SERVER_NODE_NAME}
   ${SUBSCRIBER_NODE_NAME}
-  ${ACTION_SERVER_NODE_NAME}
-  ${ACTION_CLIENT_NODE_NAME}
   DESTINATION lib/${PROJECT_NAME}
 )
 
