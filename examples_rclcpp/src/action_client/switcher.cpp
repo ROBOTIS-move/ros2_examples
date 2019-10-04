@@ -102,6 +102,7 @@ void Switcher::result_callback(
   {
     case rclcpp_action::ResultCode::SUCCEEDED:
     {
+      RCLCPP_INFO(get_logger(), "Goal was succeeded");
       break;
     }
     case rclcpp_action::ResultCode::ABORTED:
