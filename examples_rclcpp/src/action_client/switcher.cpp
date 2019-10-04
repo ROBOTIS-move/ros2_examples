@@ -94,11 +94,11 @@ void Switcher::feedback_callback(
 }
 
 void Switcher::result_callback(
-  const rclcpp_action::ClientGoalHandle<Led>::WrappedResult & result)
+  const rclcpp_action::ClientGoalHandle<Led>::WrappedResult & output)
 {
   goal_done_ = true;
 
-  switch (result.code)
+  switch (output.code)
   {
     case rclcpp_action::ResultCode::SUCCEEDED:
     {
@@ -124,7 +124,7 @@ void Switcher::result_callback(
 
   RCLCPP_INFO(get_logger(), "Result received");
 
-  for (auto number : result.result->result)
+  for (auto number : output.result->result)
   {
     RCLCPP_INFO(get_logger(), "%s", number.c_str());
   }

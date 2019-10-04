@@ -38,7 +38,7 @@ class Switcher : public rclcpp::Node
     const std::shared_ptr<const Led::Feedback> feedback);
 
   void result_callback(
-    const rclcpp_action::ClientGoalHandle<Led>::WrappedResult & result);
+    const rclcpp_action::ClientGoalHandle<Led>::WrappedResult & output);
 
   bool goal_done_ = false;
 
