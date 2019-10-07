@@ -2,6 +2,10 @@
 Changelog for package examples_rqt
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.0 (2019-10-07)
+------------------
+* None
+
 1.0.0 (2019-08-09)
 ------------------
 * Changed text of keypad for O/S's compatibility

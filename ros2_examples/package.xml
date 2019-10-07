@@ -1,21 +1,23 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>examples_rclcpp</name>
+  <name>ros2_examples</name>
   <version>1.1.0</version>
   <description>
-    Examples of ROS 2 C++ nodes
+    ROS 2 example packages
   </description>
   <author email="thlim@robotis.com">Darby Lim</author>
+  <author email="pyo@robotis.com">Pyo</author>
   <author email="osh@robotis.com">SungHyeon Oh</author>
   <maintainer email="pyo@robotis.com">Pyo</maintainer>
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <depend>examples_msgs</depend>
-  <depend>rclcpp</depend>
-  <depend>rclcpp_action</depend>
-  <depend>rcutils</depend>
-  <depend>std_msgs</depend>
+  <exec_depend>examples_lifecycle</exec_depend>
+  <exec_depend>examples_msgs</exec_depend>
+  <exec_depend>examples_rclcpp</exec_depend>
+  <exec_depend>examples_rclpy</exec_depend>
+  <exec_depend>examples_rqt</exec_depend>
+  <exec_depend>examples_tf2</exec_depend>
   <export>
     <build_type>ament_cmake</build_type>
   </export>
