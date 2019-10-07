@@ -14,7 +14,7 @@
 * limitations under the License.
 *******************************************************************************/
 
-/* Authors: OhSungHyeon */
+/* Authors: SungHyeon Oh */
 
 #ifndef EXAMPLES_RCLCPP_ACTION_SERVER_LIGHTBULB_HPP_
 #define EXAMPLES_RCLCPP_ACTION_SERVER_LIGHTBULB_HPP_

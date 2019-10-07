@@ -14,7 +14,7 @@
 * limitations under the License.
 *******************************************************************************/
 
-/* Authors: OhSungHyeon */
+/* Authors: SungHyeon Oh */
 
 #include "action_client/switcher.hpp"
 
