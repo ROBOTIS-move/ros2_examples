@@ -2,7 +2,7 @@
 int32 numbers
 ---
 # Result
-int32[] result
+string[] result
 ---
 # Feedback
-int32[] process
+string[] process

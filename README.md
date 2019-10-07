@@ -43,6 +43,16 @@ $ ros2 run examples_rclcpp client -a ${number} -b ${number} -o ${arithmetic_oper
 
 ${arithmetic_operator} : plus, minus, multiply, division
 
+### Action Server
+```bash
+$ ros2 run examples_rclcpp action_server
+```
+
+### Action Client
+```bash
+$ ros2 run examples_rclcpp action_client -n ${number}
+```
+
 ### Launch
 ```bash
 $ ros2 launch examples_rclcpp pub.launch.py

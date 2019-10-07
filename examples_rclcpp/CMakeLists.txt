@@ -18,7 +18,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(examples_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
-
+find_package(rclcpp_action REQUIRED)
 ################################################################################
 # Build
 ################################################################################
@@ -26,6 +26,8 @@ include_directories(
   include
 )
 
+set(ACTION_SERVER_NODE_NAME action_server)
+set(ACTION_CLIENT_NODE_NAME action_client)
 set(CLIENT_NODE_NAME client)
 set(PUBLISHER_NODE_NAME publisher)
 set(SERVER_NODE_NAME server)
@@ -34,6 +36,7 @@ set(SUBSCRIBER_NODE_NAME subscriber)
 set(dependencies
   "examples_msgs"
   "rclcpp"
+  "rclcpp_action"
 )
 
 add_executable(${CLIENT_NODE_NAME} src/client/main.cpp src/client/requestor.cpp)
@@ -48,10 +51,18 @@ ament_target_dependencies(${SERVER_NODE_NAME} ${dependencies})
 add_executable(${SUBSCRIBER_NODE_NAME} src/subscriber/main.cpp src/subscriber/observer.cpp)
 ament_target_dependencies(${SUBSCRIBER_NODE_NAME} ${dependencies})
 
+add_executable(${ACTION_SERVER_NODE_NAME} src/action_server/main.cpp src/action_server/lightbulb.cpp)
+ament_target_dependencies(${ACTION_SERVER_NODE_NAME} ${dependencies})
+
+add_executable(${ACTION_CLIENT_NODE_NAME} src/action_client/main.cpp src/action_client/switcher.cpp)
+ament_target_dependencies(${ACTION_CLIENT_NODE_NAME} ${dependencies})
+
 ################################################################################
 # Install
 ################################################################################
 install(TARGETS
+  ${ACTION_SERVER_NODE_NAME}
+  ${ACTION_CLIENT_NODE_NAME}
   ${CLIENT_NODE_NAME}
   ${PUBLISHER_NODE_NAME}
   ${SERVER_NODE_NAME}
