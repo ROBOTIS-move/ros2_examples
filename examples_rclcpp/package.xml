@@ -7,6 +7,7 @@
     Examples of ROS 2 C++ nodes
   </description>
   <author email="thlim@robotis.com">Darby Lim</author>
+  <author email="osh@robotis.com">OhSungHyeon</author>
   <maintainer email="pyo@robotis.com">Pyo</maintainer>
   <license>Apache 2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
