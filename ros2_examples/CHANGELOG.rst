@@ -7,7 +7,7 @@ Changelog for package ros2_examples
 * Added example node for action server and client
 * Added example package for lifecycle
 * Added messages for action
-* Contributors: SungHyeon Oh, Darby Lim, Pyo
+* Contributors: SungHyeon Oh, Darby Lim, EunSung Yang, Gilbert, Pyo
 
 1.0.0 (2019-08-05)
 ------------------
