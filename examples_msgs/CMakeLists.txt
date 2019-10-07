@@ -15,11 +15,11 @@ endif()
 ################################################################################
 # Find and load build settings from external packages
 ################################################################################
-find_package(action_msgs REQUIRED)
 find_package(ament_cmake REQUIRED)
+find_package(action_msgs REQUIRED)
+find_package(rclcpp_action REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(rclcpp_action REQUIRED)
 
 ################################################################################
 # Declare ROS messages, services and actions
