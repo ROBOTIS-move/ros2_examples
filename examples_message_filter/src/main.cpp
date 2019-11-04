@@ -66,9 +66,10 @@ int main(int argc, char * argv[])
 
   // Specify lifecycle node
   using namespace std::chrono_literals;
-  auto pub1 = std::make_shared<robotis::Counter>("first", "first", 73ms);
-  auto pub2 = std::make_shared<robotis::Counter>("second", "second", 37ms);
-  auto filter = std::make_shared<robotis::MsgFilters>(10, "first", "second");
+  auto queue_size = 10;
+  auto pub1 = std::make_shared<robotis::Counter>("first", "first", 10ms);
+  auto pub2 = std::make_shared<robotis::Counter>("second", "second", 20ms);
+  auto filter = std::make_shared<robotis::MsgFilters>(queue_size, "first", "second");
 
   // Added node to executor
   executor.add_node(pub1);
