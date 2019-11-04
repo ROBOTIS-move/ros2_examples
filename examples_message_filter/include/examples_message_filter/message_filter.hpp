@@ -78,9 +78,9 @@ class MsgFilters : public rclcpp::Node
       *msg_ftr_sub_2_);
 
     using namespace std::chrono_literals;
-    synced_data_->setMaxIntervalDuration(rclcpp::Duration(18ms));
-    synced_data_->setInterMessageLowerBound(0, rclcpp::Duration(36ms));
-    synced_data_->setInterMessageLowerBound(1, rclcpp::Duration(18ms));
+    // synced_data_->setMaxIntervalDuration(rclcpp::Duration(18ms));
+    // synced_data_->setInterMessageLowerBound(0, rclcpp::Duration(36ms));
+    // synced_data_->setInterMessageLowerBound(1, rclcpp::Duration(18ms));
     // synced_data_->setInterMessageLowerBound(2, rclcpp::Duration(25ms));
 
     synced_data_->registerCallback(
