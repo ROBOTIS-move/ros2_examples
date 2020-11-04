@@ -22,4 +22,4 @@ install:
 
 matrix:
   include:
-    - script: .ros2ci/travis.bash nightly
+    - script: .ros2ci/travis.bash dashing
